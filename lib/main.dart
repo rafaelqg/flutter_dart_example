@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'model/Contact.dart';
+import 'WidgetNewContact.dart';
 
 
 void main() {
@@ -78,7 +79,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   Contact contact=Contact("","");
-  //data types: Number	(int, double, num),String,	bool, List, Map.
+
   final stepValueController = TextEditingController();
   final contactNameController = TextEditingController();
   final contactEmailController = TextEditingController();
@@ -122,6 +123,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void openAnotherWidget(){
+    Navigator.push( context, MaterialPageRoute(builder: (context) => MyApp()));
+  }
+
+  void backToPreviousWidget(){
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -157,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'CONTACT DATA:',
+              'YOUR ACCOUNT DATA:',
             ),
             TextFormField(
                 controller:contactNameController,
@@ -171,6 +180,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   border: UnderlineInputBorder(),
                   labelText: 'Contact email:',
                 )),
+
+
             TextButton(
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
@@ -178,13 +189,38 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () { },
               child: Text('Update'),
             ),
+        TextButton(
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+          ),
+          onPressed: () { },
+          child: Text('Show state B')
+        ),
+            /*
+            TextButton(
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: () { },
+                child: Text('Show state A')
+            ),
             TextButton(
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
               ),
               onPressed: () { },
               child: Text('Cancel'),
+            ),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () {
+                Navigator.push( context, MaterialPageRoute(builder: (context) => NewContact()));
+              },
+              child: Text('Create new contact'),
             )
+            */
             /*
             const Text(
               'You have pushed the button this many times:',
